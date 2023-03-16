@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+    <link rel="stylesheet" href="bootstrap-5.2.2-dist/css/bootstrap.css">
+</head>
+<body class="bg-secondary">
+    <section>
+        <nav class="navbar navbar-expand-lg bg-danger">
+          <div class="container-fluid">
+            <a class="navbar-brand text-light" href="#">Navbar</a>
+            <button class="navbar-toggler bg-light btn btn-outline-success" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link active  text-light" aria-current="page" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link  text-light" href="#">Admin page</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link  text-light dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Dropdown
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+  </section>
+  <!-- Upload section -->
+  <section>
+      <div class="container mt-5">
+        <div class="row w-50 mx-auto border p-4 rounded ">
+            <div class="col-12 text-center">
+                <h5 class="text-light">Upload To Dash</h5>
+
+                <div class="text-warning" id="error"></div>
+                
+                <input type="file" class="form-control my-3" placeholder="Sale's Picture" id="sp">
+
+                <input type="text" class="form-control my-3" placeholder="Sale's name" id="sn">
+
+                <input type="text" class="form-control my-3" placeholder="Sale's Description" id="sd">
+
+                <input type="text" class="form-control my-3" placeholder="Sale's Present Price" id="spp">
+
+                <input type="text" class="form-control my-3" placeholder="Sale's Previous Price" id="sbp">
+                <button class="btn btn-danger w-100" id="addbutton">ADD TO DASHBOARD</button>
+               <a href="index.html">
+                <button class="btn btn-info w-100 mt-2" id="dash">GO TO DASHBOARD</button>
+               </a>
+            </div>
+        </div>
+
+    </div>
+  </section>
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>registerAsAdmin</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="bootstrap-5.2.2-dist/css/bootstrap.css">
+</head>
+<body class="bg-danger">
+    <div class="container mt-5">
+        <div class="row w-50 mx-auto border p-4 rounded ">
+            <div class="col-12 text-center">
+                <h5 class="text-light">ADMIN REGISTER</h5>
+                
+                <div class="text-warning" id="error"></div>
+
+                <input type="text" class="form-control my-3" placeholder="First Name" id="fn">
+
+                <input type="text" class="form-control my-3" placeholder="Last Name" id="ln">
+
+                <input type="text" class="form-control my-3" placeholder="Phone Number" id="ph">
+
+                <input type="text" class="form-control my-3" placeholder="E-mail" id="em">
+
+                <input type="text" class="form-control my-3" placeholder="PASSWORD" id="ps">
+                <button class="btn btn-outline-info w-100" onclick="logg()">LOGIN</button>
+
+                <a href="adminlog.html">
+                    <button class="btn btn-info w-100 mt-2">BACK</button>
+                </a>
+            </div>
+        </div>
+        </div>
+
+
+        <script>
+            let allAdminDetails = []
+
+            if(localStorage.EveryAdminUsersDetails){
+                let oldData = JSON.parse(localStorage.getItem("EveryAdminUsersDetails"))
+                allAdminDetails = oldData
+            }
+
+            const logg = () => {
+                if(fn.value == "" || ln.value == "" || ph.value == "" || em.value == "" || ps.value == ""){
+                    error.innerHTML = "Details is Incorrect"
+
+                    setTimeout(() => {
+                    error.innerHTML = ""
+                    }, 3000);
+                }else{
+                let eachPersonalDetails = {
+                    firstname : fn.value,
+                    lastname : ln.value,
+                    phonenumber: ph.value,
+                    email: em.value,
+                    password: ps.value
+                }
+
+                allAdminDetails.push(eachPersonalDetails)
+                console.log(allAdminDetails)
+
+                localStorage.setItem("EveryAdminUsersDetails", JSON.stringify(allAdminDetails))
+
+                fn.value = ""
+                ln.value = ""
+                ph.value = ""
+                em.value = ""
+                
+                window.location = 'adminlog.html'
+            }
+        }
+        </script>
+</body>
+</html>
