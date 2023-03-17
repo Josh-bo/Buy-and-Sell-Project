@@ -1,13 +1,4 @@
-  <!DOCTYPE html>
-  <html lang="en">
-  <head>
-      <meta charset="UTF-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Document</title>
-  </head>
-  <body>
-      <!DOCTYPE html>
+<!DOCTYPE html>
   <html lang="en">
   <head>
       <meta charset="UTF-8">
@@ -65,10 +56,9 @@
           <div class="row ps-5 ms-2" id="salesDisplay"></div>
       </section>
   
-  <script src="/bootstrap-5.2.2-dist/js/bootstrap.bundle.js"></script>
-
-  <script type="module">
-    // Import the functions you need from the SDKs you need
+      
+      <script type="module">
+        // Import the functions you need from the SDKs you need
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
     import {  getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js";
     import { getDownloadURL, ref as stRef, getStorage,} from "https://www.gstatic.com/firebasejs/9.17.2/firebase-storage.js";
@@ -107,10 +97,11 @@
           <div class="rounded text-center col-sm-12 col-md-6 col-lg-4 ms-3 mt-3" style="width: 14rem;" >
             <img src="${url}" class="card-img-top" alt="..." style="height: 50%;">
               <div class="card-body text-center">
-                <h5 class="card-title">T - shirt</h5>
-                <p class="card-text">#4,500 <del class="text-danger"><i> #5,000</i></del></p>
-              </div>
-              <button class="btn btn-danger my-2" onclick="buy()">ADD CHART</button>
+                <h5 class="card-title">${eachSale.salename}</h5>
+                <p>${eachSale.saledesc}</p>
+                <p class="card-text">${eachSale.saleppp} <del class="text-danger"><i>${eachSale.salepp}</i></del></p>
+                </div>
+                <button class="btn btn-danger my-2" onclick="buy()">ADD CHART</button>
             </div>
            </div>
              
@@ -118,8 +109,9 @@
         });
       });
     })
-
     
-  </script>
+    
+    </script>
+  <script src="bootstrap-5.2.2-dist/js/bootstrap.bundle.js"></script>
   </body>
   </html>
