@@ -92,10 +92,11 @@
     const storage = getStorage();
     
     let allUploads = [];
+    let userIndex = 0;
     addbutton.addEventListener('click', () => {
       // alert("Izz working")
-        let saleImg = userImg.files[0]
-        let realSaleImg = saleImg.name
+        let saleImg = sp.files[0];
+        let realSaleImg = saleImg.name;
 
         let uploadDetails = {
           pic : sp.value,
@@ -103,13 +104,13 @@
           saledesc : sd.value,
           salepp : spp.value,
           saleppp : sbp.value,
-        }
+        };
         console.log(uploadDetails);
 
-        let dbref = ref(db, `salesStore/${userIndex}`)
+        let dbref = ref(db, `salesStore/${userIndex}`);
         set(dbref,uploadDetails);
 
-        let imgsRef = stRef(storage, `salesStore/${saleImg.name}`)
+        let imgsRef = stRef(storage, `salesStore/${saleImg.name}`);
         uploadBytesResumable(imgsRef, saleImg);
       })
 
@@ -121,7 +122,7 @@
           userIndex = allUploads.length
         }else{
           userIndex = 0
-        }
+        };
     })
   </script>
 </body>

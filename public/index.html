@@ -1,13 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard</title>
-  <link rel="stylesheet" href="bootstrap-5.2.2-dist/css/bootstrap.css">
-</head>
-<body>
   <!DOCTYPE html>
   <html lang="en">
   <head>
@@ -29,7 +19,7 @@
   </head>
   <body class="bg-">
       <section>
-          <nav class="navbar navbar-expand-lg bg-danger">
+          <nav class="navbar navbar-expand-lg bg-danger fixed-top">
               <div class="container-fluid">
                 <a class="navbar-brand text-light" href="#">Navbar</a>
                 <button class="navbar-toggler bg-light btn btn-outline-success" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -72,24 +62,64 @@
       <!-- Sales section -->
       <section>
         <div class="container-fluid mt-5 p-2" >
-          <div class="row" id="salesDisplay">
-            <div class="card col-sm-12 col-md-6 col-lg-4 ms-2 mt-3" style="width: 20.5rem;" >
-              <img src="/Images/jackson-free-personal-resume-website-template.webp" class="card-img-top" alt="..." style="height: 100%;">
+          <div class="row ps-5 ms-2" id="salesDisplay"></div>
+      </section>
+  
+  <script src="/bootstrap-5.2.2-dist/js/bootstrap.bundle.js"></script>
+
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
+    import {  getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js";
+    import { getDownloadURL, ref as stRef, getStorage,} from "https://www.gstatic.com/firebasejs/9.17.2/firebase-storage.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyAFFUWdTrn8uDpN1ZhHy4ghqJ8GS99DSXE",
+      authDomain: "buy-and-sell-project-3b7fa.firebaseapp.com",
+      databaseURL: "https://buy-and-sell-project-3b7fa-default-rtdb.firebaseio.com",
+      projectId: "buy-and-sell-project-3b7fa",
+      storageBucket: "buy-and-sell-project-3b7fa.appspot.com",
+      messagingSenderId: "714680811692",
+      appId: "1:714680811692:web:9e3286b24293649e20df09"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase();
+    const storage = getStorage();
+    
+    let allUploads = [];
+
+    onValue(ref(db, "salesStore"), (snapshot) => {
+      console.log(snapshot.val());
+      allUploads = snapshot.val();
+
+      allUploads.map((eachSale) => {
+        // let imgRef = stRef(storage, `salesStore/${eachSale.pic}`);
+        let imgRef = stRef(storage, `salesStore/${eachSale.pic.replace("C:\\fakepath\\", "")}`);
+        getDownloadURL(imgRef).then((url) => {
+          console.log(url)
+
+          salesDisplay.innerHTML += `
+          <div class="rounded text-center col-sm-12 col-md-6 col-lg-4 ms-3 mt-3" style="width: 14rem;" >
+            <img src="${url}" class="card-img-top" alt="..." style="height: 50%;">
               <div class="card-body text-center">
                 <h5 class="card-title">T - shirt</h5>
-                <p class="card-text">#4,500 <del>#5,000</del></p>
+                <p class="card-text">#4,500 <del class="text-danger"><i> #5,000</i></del></p>
               </div>
               <button class="btn btn-danger my-2" onclick="buy()">ADD CHART</button>
             </div>
            </div>
-          </div>
-        </div>
-      </section>
-  
-  <script src="/bootstrap-5.2.2-dist/js/bootstrap.bundle.js"></script>
+             
+          `
+        });
+      });
+    })
+
+    
+  </script>
   </body>
   </html>
-  </body>
-  </html>
-</body>
-</html>
