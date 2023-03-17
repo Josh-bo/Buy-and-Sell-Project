@@ -91,8 +91,37 @@
     const db = getDatabase();
     const storage = getStorage();
     
+    let eachUserDetails = [];
     addbutton.addEventListener('click', () => {
-      alert("Izz working")
+      // alert("Izz working")
+        let saleImg = userImg.files[0]
+        let realSaleImg = saleImg.name
+
+        let uploadDetails = {
+          pic : sp.value,
+          salename : sn.value,
+          saledesc : sd.value,
+          salepp : spp.value,
+          saleppp : sbp.value,
+        }
+        console.log(uploadDetails);
+
+        let dbref = ref(db, `salesStore/${userIndex}`)
+        set(dbref,uploadDetails);
+
+        let imgsRef = stRef(storage, `salesStore/${saleImg.name}`)
+        uploadBytesResumable(imgsRef, saleImg);
+      })
+
+      onValue(ref(db, "salesStore"), (snapshot) => {
+        console.log(snapshot.val());
+        allUploads = snapshot.val();
+
+        if(allUploads){
+          userIndex = allUploads.length
+        }else{
+          userIndex = 0
+        }
     })
   </script>
 </body>
