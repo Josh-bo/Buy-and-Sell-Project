@@ -88,7 +88,7 @@
   
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
-    const db = database();
+    const db = getDatabase();
     const storage = getStorage();
     
     addbutton.addEventListener('click', () => {
